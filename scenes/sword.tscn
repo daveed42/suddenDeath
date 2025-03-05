@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkum4cbbkifq1"]
+
+[ext_resource type="Texture2D" uid="uid://dirdtvujqc2x0" path="res://assets/swordUp.png" id="1_qgd0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0tr7"]
+size = Vector2(14, 30)
+
+[node name="Sword" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qgd0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y0tr7")
+debug_color = Color(0.616063, 0.53631, 3.85046e-07, 0.42)

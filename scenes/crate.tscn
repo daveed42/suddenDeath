@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://brrwg3vhewcef"]
+
+[ext_resource type="Script" path="res://crate.gd" id="1_xd1oq"]
+[ext_resource type="Texture2D" uid="uid://b8w6t4yjtiqgk" path="res://assets/crate.png" id="2_jh8jq"]
+[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="3_3qksc"]
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="4_y5f6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsq5l"]
+size = Vector2(16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hog2g"]
+size = Vector2(14, 14)
+
+[node name="Crate" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_xd1oq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jh8jq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_jsq5l")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("healthComponent")]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("3_3qksc")
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_hog2g")
+debug_color = Color(0.904069, 0.199542, 0.58331, 0.42)
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("4_y5f6u")
+
+[connection signal="area_entered" from="HitboxComponent" to="HealthComponent" method="_on_hitbox_component_area_entered"]

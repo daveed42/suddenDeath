@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://3u4esg6wy71d"]
+
+[ext_resource type="Texture2D" uid="uid://c6anoih5rvryx" path="res://assets/Effects/Fire/Fire.png" id="1_61uhx"]
+[ext_resource type="Script" path="res://scripts/mob/bullet.gd" id="1_bhnf7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h66dh"]
+radius = 8.0
+height = 26.0
+
+[node name="Projectile" type="CharacterBody2D" groups=["Projectile"]]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_bhnf7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_61uhx")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_h66dh")
+
+[node name="ProjectileHitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 184
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox"]
+shape = SubResource("CapsuleShape2D_h66dh")
+
+[node name="ProjectileLifetime" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_entered" from="ProjectileHitbox" to="." method="_on_projectile_hitbox_area_entered"]
+[connection signal="body_entered" from="ProjectileHitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ProjectileLifetime" to="." method="_on_projectile_lifetime_timeout"]

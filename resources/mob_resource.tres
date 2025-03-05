@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://b6or3c8jbxpme"]
+
+[ext_resource type="Script" path="res://scripts/mob/enemy_stats.gd" id="1_5flpg"]
+
+[resource]
+script = ExtResource("1_5flpg")
+moveSpeed = 150

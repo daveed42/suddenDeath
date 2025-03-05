@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bou3e13ojrkvf"]
+
+[ext_resource type="Script" path="res://scripts/attack_hitbox.gd" id="1_w71hh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mogli"]
+radius = 18.0
+height = 54.0
+
+[node name="AttackHitbox" type="Area2D"]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_w71hh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_mogli")
+debug_color = Color(0.75866, 0.0115436, 0, 0.42)

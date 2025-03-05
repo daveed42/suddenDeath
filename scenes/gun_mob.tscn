@@ -1,0 +1,153 @@
+[gd_scene load_steps=16 format=3 uid="uid://dyiodwliigdgf"]
+
+[ext_resource type="Script" path="res://scripts/mob/gun_mob.gd" id="1_bh4s1"]
+[ext_resource type="Texture2D" uid="uid://c64gik5rh2r5" path="res://assets/Factions/Goblins/Troops/TNT/Purple/TNT_Purple.png" id="1_kc8ww"]
+[ext_resource type="Resource" uid="uid://b6or3c8jbxpme" path="res://resources/mob_resource.tres" id="2_cxplg"]
+[ext_resource type="Script" path="res://scripts/mob/enemy_wander.gd" id="2_ytrb4"]
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="3_3heno"]
+[ext_resource type="Script" path="res://scripts/mob/enemy_lock_on.gd" id="3_10pgj"]
+[ext_resource type="Script" path="res://scripts/mob/mobStateMachine.gd" id="3_mlxru"]
+[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="4_guqqr"]
+[ext_resource type="Script" path="res://scripts/mob/shoot_timer.gd" id="9_fcnr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lbhn"]
+size = Vector2(41, 33)
+
+[sub_resource type="Animation" id="Animation_7540h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_yfi38"]
+resource_name = "moveLeft"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n81cy"]
+resource_name = "moveRight"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0nwq"]
+_data = {
+"RESET": SubResource("Animation_7540h"),
+"moveLeft": SubResource("Animation_yfi38"),
+"moveRight": SubResource("Animation_n81cy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5832"]
+size = Vector2(41, 33)
+
+[node name="GunMob" type="CharacterBody2D" groups=["GunMob"]]
+collision_layer = 4
+script = ExtResource("1_bh4s1")
+stats = ExtResource("2_cxplg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_kc8ww")
+hframes = 7
+vframes = 3
+frame = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_4lbhn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u0nwq")
+}
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("3_mlxru")
+initialState = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("2_ytrb4")
+enemy = NodePath("../..")
+stats = ExtResource("2_cxplg")
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_10pgj")
+enemy = NodePath("../..")
+stats = ExtResource("2_cxplg")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_3heno")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("healthComponent")]
+collision_layer = 4
+collision_mask = 258
+script = ExtResource("4_guqqr")
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_o5832")
+
+[node name="ShootTimer" type="Timer" parent="."]
+script = ExtResource("9_fcnr8")
+
+[connection signal="readyToShoot" from="StateMachine/Follow" to="." method="_on_follow_ready_to_shoot"]
+[connection signal="timerStart" from="StateMachine/Follow" to="ShootTimer" method="_on_follow_timer_start"]
+[connection signal="area_entered" from="HitboxComponent" to="HealthComponent" method="_on_hitbox_component_area_entered"]
+[connection signal="timeout" from="ShootTimer" to="StateMachine/Follow" method="_on_shoot_timer_timeout"]
