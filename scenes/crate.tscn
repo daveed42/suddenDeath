@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://brrwg3vhewcef"]
 
-[ext_resource type="Script" path="res://crate.gd" id="1_xd1oq"]
+[ext_resource type="Script" uid="uid://36ffsrbqrq1t" path="res://crate.gd" id="1_xd1oq"]
 [ext_resource type="Texture2D" uid="uid://b8w6t4yjtiqgk" path="res://assets/crate.png" id="2_jh8jq"]
-[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="3_3qksc"]
-[ext_resource type="Script" path="res://scripts/health_component.gd" id="4_y5f6u"]
+[ext_resource type="Script" uid="uid://hxn6n8rv1xth" path="res://scripts/hitbox_component.gd" id="3_3qksc"]
+[ext_resource type="Script" uid="uid://b8623kf2nqe0f" path="res://scripts/health_component.gd" id="4_y5f6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsq5l"]
 size = Vector2(16, 12)

@@ -1,19 +1,19 @@
 [gd_scene load_steps=37 format=3 uid="uid://by75373b0i1n8"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_sh58v"]
+[ext_resource type="Script" uid="uid://engo1trpf5kw" path="res://scripts/player/player.gd" id="1_sh58v"]
 [ext_resource type="Texture2D" uid="uid://dp7o11g5bog7d" path="res://assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="2_8vwyq"]
-[ext_resource type="Script" path="res://scripts/player/playerStateMachine.gd" id="3_51ors"]
-[ext_resource type="Script" path="res://scripts/player/playerAnimation.gd" id="3_h2una"]
+[ext_resource type="Script" uid="uid://chysjk56ous63" path="res://scripts/player/playerStateMachine.gd" id="3_51ors"]
+[ext_resource type="Script" uid="uid://84d8xsssq5c3" path="res://scripts/player/playerAnimation.gd" id="3_h2una"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://d05km8awl2ogc" path="res://resources/player_animation_tree.tres" id="3_y7bxi"]
-[ext_resource type="Script" path="res://scripts/player/playerMove.gd" id="4_ra1uh"]
-[ext_resource type="Script" path="res://scripts/player/playerLook.gd" id="5_xque5"]
-[ext_resource type="Script" path="res://scripts/player/playerAttack.gd" id="6_csnyj"]
+[ext_resource type="Script" uid="uid://cteu6c0nrnape" path="res://scripts/player/playerMove.gd" id="4_ra1uh"]
+[ext_resource type="Script" uid="uid://b280l705oeny5" path="res://scripts/player/playerLook.gd" id="5_xque5"]
+[ext_resource type="Script" uid="uid://dkhlempxon5hy" path="res://scripts/player/playerAttack.gd" id="6_csnyj"]
 [ext_resource type="PackedScene" uid="uid://cmt2odtn452m8" path="res://scenes/hitbox_component.tscn" id="9_3eh66"]
-[ext_resource type="Script" path="res://scripts/player/player_shine.gd" id="9_6lmf7"]
-[ext_resource type="Script" path="res://scripts/player/playerDash.gd" id="9_cfigr"]
+[ext_resource type="Script" uid="uid://cwp5kpr5tjsug" path="res://scripts/player/player_shine.gd" id="9_6lmf7"]
+[ext_resource type="Script" uid="uid://brpka350t1bjh" path="res://scripts/player/playerDash.gd" id="9_cfigr"]
 [ext_resource type="PackedScene" uid="uid://y3h11ig6jbuw" path="res://scenes/health_component.tscn" id="10_0oysx"]
 [ext_resource type="PackedScene" uid="uid://bou3e13ojrkvf" path="res://scenes/attack_hitbox.tscn" id="12_wahx7"]
-[ext_resource type="Script" path="res://scenes/player_shoot.gd" id="14_deym6"]
+[ext_resource type="Script" uid="uid://r1cf40t31vju" path="res://scenes/player_shoot.gd" id="14_deym6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upp4o"]
 size = Vector2(32, 31)
@@ -267,6 +267,23 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"shineRecovery"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f1elo"]
+resource_name = "shoot"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shootRecovery"
 }]
 }
 
@@ -653,41 +670,24 @@ tracks/6/keys = {
 "values": [4.71239]
 }
 
-[sub_resource type="Animation" id="Animation_f1elo"]
-resource_name = "shoot"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"shootRecovery"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vqblk"]
 _data = {
-"RESET": SubResource("Animation_6odt1"),
-"dead": SubResource("Animation_awl1v"),
-"idleDown": SubResource("Animation_rmnu4"),
-"idleLeft": SubResource("Animation_asv6d"),
-"idleRight": SubResource("Animation_kmrd5"),
-"idleUp": SubResource("Animation_75me3"),
-"moveLookDown": SubResource("Animation_r6f87"),
-"moveLookLeft": SubResource("Animation_53f7f"),
-"moveLookRight": SubResource("Animation_ckrpy"),
-"moveLookUp": SubResource("Animation_o6os3"),
-"shine": SubResource("Animation_k2gma"),
-"shoot": SubResource("Animation_f1elo"),
-"swordDown": SubResource("Animation_pi1vr"),
-"swordLeft": SubResource("Animation_kxtt1"),
-"swordRight": SubResource("Animation_p2c6e"),
-"swordUp": SubResource("Animation_j4vx5")
+&"RESET": SubResource("Animation_6odt1"),
+&"dead": SubResource("Animation_awl1v"),
+&"idleDown": SubResource("Animation_rmnu4"),
+&"idleLeft": SubResource("Animation_asv6d"),
+&"idleRight": SubResource("Animation_kmrd5"),
+&"idleUp": SubResource("Animation_75me3"),
+&"moveLookDown": SubResource("Animation_r6f87"),
+&"moveLookLeft": SubResource("Animation_53f7f"),
+&"moveLookRight": SubResource("Animation_ckrpy"),
+&"moveLookUp": SubResource("Animation_o6os3"),
+&"shine": SubResource("Animation_k2gma"),
+&"shoot": SubResource("Animation_f1elo"),
+&"swordDown": SubResource("Animation_pi1vr"),
+&"swordLeft": SubResource("Animation_kxtt1"),
+&"swordRight": SubResource("Animation_p2c6e"),
+&"swordUp": SubResource("Animation_j4vx5")
 }
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wjay1"]
@@ -726,7 +726,7 @@ zoom = Vector2(1.5, 1.5)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_vqblk")
+&"": SubResource("AnimationLibrary_vqblk")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

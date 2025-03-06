@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://3u4esg6wy71d"]
 
 [ext_resource type="Texture2D" uid="uid://c6anoih5rvryx" path="res://assets/Effects/Fire/Fire.png" id="1_61uhx"]
-[ext_resource type="Script" path="res://scripts/mob/bullet.gd" id="1_bhnf7"]
+[ext_resource type="Script" uid="uid://ch1lt6852ne4u" path="res://scripts/mob/bullet.gd" id="1_bhnf7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h66dh"]
 radius = 8.0

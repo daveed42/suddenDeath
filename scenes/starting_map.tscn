@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://72vkj4lx1wis"]
 
-[ext_resource type="Script" path="res://scripts/starting_map.gd" id="1_gg1uu"]
+[ext_resource type="Script" uid="uid://d1g5l3komop5w" path="res://scripts/starting_map.gd" id="1_gg1uu"]
 [ext_resource type="Texture2D" uid="uid://clpnldkalayb5" path="res://assets/TX Tileset Grass.png" id="2_nkire"]
 [ext_resource type="Texture2D" uid="uid://bwdfbsjheeq26" path="res://assets/TX Props.png" id="3_pd6yj"]
 [ext_resource type="PackedScene" uid="uid://brrwg3vhewcef" path="res://scenes/crate.tscn" id="4_sdnq1"]

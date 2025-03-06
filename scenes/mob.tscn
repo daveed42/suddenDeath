@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=3 uid="uid://bu0nvumbutrbm"]
 
-[ext_resource type="Script" path="res://scripts/mob/mob.gd" id="1_ytmt8"]
+[ext_resource type="Script" uid="uid://cgy6i7f62ny2u" path="res://scripts/mob/mob.gd" id="1_ytmt8"]
 [ext_resource type="Resource" uid="uid://b6or3c8jbxpme" path="res://resources/mob_resource.tres" id="2_es63q"]
 [ext_resource type="Texture2D" uid="uid://cq32u4jy5mlkb" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_vk73u"]
-[ext_resource type="Script" path="res://scripts/mob/mobStateMachine.gd" id="3_1iwmq"]
-[ext_resource type="Script" path="res://scripts/mob/enemy_wander.gd" id="4_ni4e1"]
-[ext_resource type="Script" path="res://scripts/mob/enemy_follow.gd" id="5_aoxh4"]
-[ext_resource type="Script" path="res://scripts/dead.gd" id="6_l5w8m"]
-[ext_resource type="Script" path="res://scripts/health_component.gd" id="6_obygg"]
-[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="7_qk2qh"]
+[ext_resource type="Script" uid="uid://bvgxcrkwc7elm" path="res://scripts/mob/mobStateMachine.gd" id="3_1iwmq"]
+[ext_resource type="Script" uid="uid://dbvjll87u4ll6" path="res://scripts/mob/enemy_wander.gd" id="4_ni4e1"]
+[ext_resource type="Script" uid="uid://cxlio0n4hkpr0" path="res://scripts/mob/enemy_follow.gd" id="5_aoxh4"]
+[ext_resource type="Script" uid="uid://djqoi07jhq8co" path="res://scripts/dead.gd" id="6_l5w8m"]
+[ext_resource type="Script" uid="uid://b8623kf2nqe0f" path="res://scripts/health_component.gd" id="6_obygg"]
+[ext_resource type="Script" uid="uid://hxn6n8rv1xth" path="res://scripts/hitbox_component.gd" id="7_qk2qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gswa0"]
 size = Vector2(28, 14)
@@ -144,11 +144,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bv13a"]
 _data = {
-"RESET": SubResource("Animation_ksmq5"),
-"moveLeft": SubResource("Animation_fjxm5"),
-"moveRight": SubResource("Animation_g4e0x"),
-"swingLeft": SubResource("Animation_qvenr"),
-"swingRight": SubResource("Animation_e2xlg")
+&"RESET": SubResource("Animation_ksmq5"),
+&"moveLeft": SubResource("Animation_fjxm5"),
+&"moveRight": SubResource("Animation_g4e0x"),
+&"swingLeft": SubResource("Animation_qvenr"),
+&"swingRight": SubResource("Animation_e2xlg")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i073c"]
@@ -173,7 +173,7 @@ shape = SubResource("RectangleShape2D_gswa0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bv13a")
+&"": SubResource("AnimationLibrary_bv13a")
 }
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
