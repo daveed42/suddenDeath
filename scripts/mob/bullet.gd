@@ -13,8 +13,9 @@ var reflected : bool = false
 func _ready() -> void:
 	global_position = spawnPos
 	global_rotation = spawnRotation 
+	print("Bullet parent: ", get_parent())
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if reflected == true:
 		velocity = direction.normalized() * speed * 1.5
 	else:
@@ -35,9 +36,7 @@ func _on_projectile_hitbox_area_entered(area: Area2D) -> void:
 		$ProjectileHitbox.set_collision_layer_value(9, true)
 		$ProjectileHitbox.set_collision_mask_value(3, true)
 	
-	print("Area Class: ", area.get("name"),)
 	if area.get("name") == "HitboxComponent":
-		print("Bullet hit something!")
 		queue_free()
 
 func _on_projectile_lifetime_timeout() -> void:

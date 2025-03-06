@@ -97,7 +97,7 @@ advance_expression = "!attacking"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_62f3t"]
 switch_mode = 1
 advance_mode = 2
-advance_expression = "shining"
+advance_expression = "shining AND canShine"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g83q3"]
 advance_mode = 2
@@ -105,7 +105,7 @@ advance_expression = "!shining"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3y350"]
 advance_mode = 2
-advance_expression = "shining"
+advance_expression = "shining AND canShine"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_etrmx"]
 advance_mode = 2

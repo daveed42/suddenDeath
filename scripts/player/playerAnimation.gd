@@ -9,7 +9,7 @@ var lastFacingDirection := Vector2(0, 1)
 func _ready():
 	animationTree.active = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var idle = !player.velocity
 	
 	lastFacingDirection = playerLook.lastLookDirection

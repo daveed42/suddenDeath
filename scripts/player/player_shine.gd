@@ -6,7 +6,6 @@ signal shineSignal
 
 var shining : bool = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shine"):
-		print("Shine")
 		shineSignal.emit(true)

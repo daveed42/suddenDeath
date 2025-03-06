@@ -3,10 +3,13 @@ extends Node2D
 
 var dashVector : Vector2 = Vector2()
 var dashMult : int = 5
+var canDash : bool = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
-		dash()
+		if canDash:
+			canDash = false
+			dash()
 
 func dash():
 	if player.velocity != Vector2.ZERO:
@@ -17,7 +20,8 @@ func dash():
 	
 	player.move_and_slide()
 	
-	await get_tree().create_timer(.25).timeout
+	await get_tree().create_timer(.5).timeout
+	canDash = true
 	
 	
 func noMoveDash():
